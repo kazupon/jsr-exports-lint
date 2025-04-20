@@ -1,6 +1,6 @@
-# tsdown-exports-validator
+# tsdown-jsr-exports-lint
 
-> JavaScript package exports field validation with tsdown
+> JSR exports field lint with tsdown
 
 ## 🐱 Motivation
 
@@ -10,16 +10,16 @@ TODO:
 
 ```sh
 # npm
-npm install --save tsdown-exports-validator
+npm install --save tsdown-jsr-exports-lint
 
 ## yarn
-yarn add tsdown-exports-validator
+yarn add tsdown-jsr-exports-lint
 
 ## pnpm
-pnpm add tsdown-exports-validator
+pnpm add tsdown-jsr-exports-lint
 
 ## bum
-bun add tsdown-exports-validator
+bun add tsdown-jsr-exports-lint
 ```
 
 ## 🚀 Usage

@@ -1,21 +1,20 @@
 {
-  "name": "tsdown-exports-validator",
-  "description": "JavaScript package exports field validation with tsdown",
+  "name": "tsdown-jsr-exports-lint",
+  "description": "JSR exports field lint with tsdown",
   "version": "0.0.0",
   "license": "MIT",
   "funding": "https://github.com/sponsors/kazupon",
   "bugs": {
-    "url": "https://github.com/kazupon/tsdown-exports-validator/issues"
+    "url": "https://github.com/kazupon/tsdown-jsr-exports-lint/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kazupon/tsdown-exports-validator.git"
+    "url": "git+https://github.com/kazupon/tsdown-jsr-exports-lint.git"
   },
   "keywords": [
     "tsdown",
     "exports",
-    "jsr.json",
-    "package.json"
+    "jsr.json"
   ],
   "publishConfig": {
     "access": "public"
@@ -49,7 +48,7 @@
   },
   "scripts": {
     "build": "tsdown",
-    "changelog": "gh-changelogen --repo=kazupon/tsdown-exports-validator",
+    "changelog": "gh-changelogen --repo=kazupon/tsdown-jsr-exports-lint",
     "clean": "git clean -df",
     "dev": "pnpx @eslint/config-inspector --config eslint.config.ts",
     "dev:eslint": "pnpx @eslint/config-inspector --config eslint.config.ts",
