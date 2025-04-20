@@ -60,7 +60,7 @@ export function jsrExportsLint(jsrPath?: string): onSuccessHandler {
     if (messages.length > 0) {
       for (const msg of messages) {
         console.log('')
-        error(msg)
+        error(pc.dim(msg))
         console.log('')
       }
       // eslint-disable-next-line unicorn/no-process-exit

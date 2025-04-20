@@ -10,24 +10,14 @@ export function validateJsrExports(
   const result: Record<string, string | true> = {}
 
   for (const [key, value] of Object.entries(entries)) {
-    if (key === 'index') {
-      if (jsr['.']) {
-        result['.'] =
-          jsr['.'] === `./${value}`
-            ? true
-            : `jsr.exports["."] is ./${value}, but it does not exist in jsr file.`
-      } else {
-        result['.'] = `jsr.exports["."] does not define.`
-      }
+    const exportKey = key === 'index' ? '.' : `./${key}`
+    if (jsr[exportKey]) {
+      result[exportKey] =
+        jsr[exportKey] === `./${value}`
+          ? true
+          : `jsr.exports["${exportKey}"] is ./${value}, but it does not exist in jsr file.`
     } else {
-      if (jsr[`./${key}`]) {
-        result[`./${key}`] =
-          jsr[`./${key}`] === `./${value}`
-            ? true
-            : `jsr.exports["./${key}"] is ./${value}, but it does not exist in jsr file.`
-      } else {
-        result[`./${key}`] = `jsr.exports["./${key}"] does not define.`
-      }
+      result[exportKey] = `jsr.exports["${exportKey}"] does not define.`
     }
   }
 
