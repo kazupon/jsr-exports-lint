@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      resolve-pkg-maps:
-        specifier: ^1.0.0
-        version: 1.0.0
     devDependencies:
       '@eslint/markdown':
         specifier: ^6.4.0
