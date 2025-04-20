@@ -68,6 +68,9 @@
     "typecheck": "pnpm run --stream --color \"/^typecheck:/\"",
     "typecheck:tsc": "tsc --noEmit"
   },
+  "dependencies": {
+    "picocolors": "^1.1.1"
+  },
   "devDependencies": {
     "@eslint/markdown": "^6.4.0",
     "@kazupon/eslint-config": "^0.29.0",
