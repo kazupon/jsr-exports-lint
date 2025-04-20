@@ -27,6 +27,7 @@ export function jsrExportsLint({ jsrPath }: JsrExportsLintOptions): onSuccessHan
 
   return async (config): Promise<void> => {
     const _entry = config.entry
+    console.log('_entry', _entry)
 
     if (jsrPath) {
       // TODO:
