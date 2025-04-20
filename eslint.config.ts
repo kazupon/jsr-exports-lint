@@ -22,9 +22,17 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
       'import/extensions': ['error', 'always', { ignorePackages: true }]
     }
   }),
-  comments(),
+  comments({
+    kazupon: {
+      ignores: ['**/*.test.ts', '**/*.spec.ts']
+    }
+  }),
   promise(),
-  unicorn(),
+  unicorn({
+    rules: {
+      'unicorn/prevent-abbreviations': 'off'
+    }
+  }),
   typescript({
     parserOptions: {
       tsconfigRootDir: import.meta.dirname
@@ -46,7 +54,8 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   }),
   vitest(),
   prettier(),
-  globalIgnores(['.vscode', '**/lib/**', 'lib', 'tsconfig.json', 'pnpm-lock.yaml'])
+  // @ts-expect-error -- FIXME
+  globalIgnores(['.vscode', '**/dist/**', 'tsconfig.json', 'pnpm-lock.yaml'])
 )
 
 export default config
