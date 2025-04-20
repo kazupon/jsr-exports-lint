@@ -49,7 +49,8 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   }),
   markdown({
     rules: {
-      'import/extensions': 'off'
+      'import/extensions': 'off',
+      'unicorn/filename-case': 'off'
     }
   }),
   vitest(),
