@@ -4,7 +4,7 @@
 
 ## 🐱 Motivation
 
-TOOD:
+TODO:
 
 ## 💿 Installation
 

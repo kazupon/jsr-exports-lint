@@ -11,7 +11,7 @@ type UserConfig = UnionToTuple<ArrayrableUserConfig>[0]
 type onSuccessHandler = NonNullable<UserConfig['onSuccess']>
 
 /**
- * JSR `exports` fileld lint options.
+ * JSR `exports` field lint options.
  */
 export interface JsrExportsLintOptions {
   /**
