@@ -19,7 +19,6 @@ import type { BuildContext } from 'tsdown'
  */
 export function lintJsrExports(jsrPath?: string): (ctx: BuildContext) => void | Promise<void> {
   return async (ctx: BuildContext): Promise<void> => {
-    console.log('lintJsrExports', ctx.options.entry)
     await lint({
       jsrPath,
       entries: ctx.options.entry as Record<string, string>,
