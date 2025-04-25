@@ -118,10 +118,10 @@
     "lint-staged": "^15.5.1",
     "prettier": "^3.5.3",
     "publint": "^0.3.12",
-    "tsdown": "^0.9.6",
+    "tsdown": "catalog:",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.31.0",
-    "unbuild": "^3.5.0",
+    "unbuild": "catalog:",
     "vitest": "^3.1.2"
   },
   "prettier": "@kazupon/prettier-config",

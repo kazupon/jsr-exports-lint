@@ -19,6 +19,6 @@
     "tsdown-jsr-exports-lint": "workspace:*"
   },
   "devDependencies": {
-    "unbuild": "^3.5.0"
+    "unbuild": "catalog:"
   }
 }
