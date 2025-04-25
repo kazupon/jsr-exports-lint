@@ -1,5 +1,11 @@
 /**
  * An entry for unbuild hooks
+ *
+ * @example
+ * ```js
+ * import { lintJsrExports } from 'jsr-exports-lint/unbuild'
+ * ```
+ *
  * @module
  */
 

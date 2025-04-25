@@ -16,7 +16,7 @@
     "build": "tsdown"
   },
   "dependencies": {
-    "tsdown-jsr-exports-lint": "workspace:*"
+    "jsr-exports-lint": "workspace:*"
   },
   "devDependencies": {
     "tsdown": "catalog:"
