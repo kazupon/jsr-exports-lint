@@ -24,7 +24,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   }),
   comments({
     kazupon: {
-      ignores: ['**/*.test.ts', '**/*.spec.ts']
+      ignores: ['**/*.test.ts', '**/*.spec.ts', 'playground/**/*.ts']
     }
   }),
   promise(),

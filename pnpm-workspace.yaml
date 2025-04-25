@@ -1,3 +1,8 @@
+packages:
+  - playground/**
 onlyBuiltDependencies:
   - esbuild
   - unrs-resolver
+catalog:
+  tsdown: ^0.9.6
+  unbuild: ^3.5.0

@@ -1,0 +1,24 @@
+{
+  "name": "@playground/unbuild",
+  "private": true,
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./utils": {
+      "import": "./dist/utils.mjs",
+      "types": "./dist/utils.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "unbuild"
+  },
+  "dependencies": {
+    "tsdown-jsr-exports-lint": "workspace:*"
+  },
+  "devDependencies": {
+    "unbuild": "catalog:"
+  }
+}
