@@ -35,6 +35,18 @@
       "require": "./dist/index.js",
       "default": "./dist/index.js"
     },
+    "./tsdown": {
+      "types": "./dist/tsdown.d.ts",
+      "import": "./dist/tsdown.js",
+      "require": "./dist/tsdown.js",
+      "default": "./dist/tsdown.js"
+    },
+    "./unbuild": {
+      "types": "./dist/unbuild.d.ts",
+      "import": "./dist/unbuild.js",
+      "require": "./dist/unbuild.js",
+      "default": "./dist/unbuild.js"
+    },
     "./package.json": "./package.json"
   },
   "types": "dist/index.d.ts",
@@ -60,6 +72,8 @@
     "lint:eslint": "eslint .",
     "lint:knip": "knip",
     "lint:prettier": "prettier . --check",
+    "play:tsdown": "pnpm run --filter @playground/tsdown build",
+    "play:unbuild": "pnpm run --filter @playground/unbuild build",
     "prepack": "pnpm build",
     "prepare": "git config --local core.hooksPath .githooks",
     "release": "bumpp --commit \"release: v%s\" --all --push --tag",
@@ -69,6 +83,18 @@
   },
   "dependencies": {
     "picocolors": "^1.1.1"
+  },
+  "peerDependencies": {
+    "tsdown": ">=0.9.6",
+    "unbuild": ">=1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "tsdown": {
+      "optional": true
+    },
+    "unbuild": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@eslint/markdown": "^6.4.0",
@@ -95,6 +121,7 @@
     "tsdown": "^0.9.6",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.31.0",
+    "unbuild": "^3.5.0",
     "vitest": "^3.1.2"
   },
   "prettier": "@kazupon/prettier-config",
