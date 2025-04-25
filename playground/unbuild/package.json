@@ -16,7 +16,7 @@
     "build": "unbuild"
   },
   "dependencies": {
-    "tsdown-jsr-exports-lint": "workspace:*"
+    "jsr-exports-lint": "workspace:*"
   },
   "devDependencies": {
     "unbuild": "catalog:"

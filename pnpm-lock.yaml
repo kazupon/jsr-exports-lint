@@ -102,7 +102,7 @@ importers:
 
   playground/tsdown:
     dependencies:
-      tsdown-jsr-exports-lint:
+      jsr-exports-lint:
         specifier: workspace:*
         version: link:../..
     devDependencies:
@@ -112,7 +112,7 @@ importers:
 
   playground/unbuild:
     dependencies:
-      tsdown-jsr-exports-lint:
+      jsr-exports-lint:
         specifier: workspace:*
         version: link:../..
     devDependencies:

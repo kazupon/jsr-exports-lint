@@ -1,18 +1,20 @@
 {
-  "name": "tsdown-jsr-exports-lint",
-  "description": "JSR exports field lint with tsdown",
+  "name": "jsr-exports-lint",
+  "description": "JSR exports field lint for bundlers",
   "version": "0.1.4",
   "license": "MIT",
   "funding": "https://github.com/sponsors/kazupon",
   "bugs": {
-    "url": "https://github.com/kazupon/tsdown-jsr-exports-lint/issues"
+    "url": "https://github.com/kazupon/jsr-exports-lint/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kazupon/tsdown-jsr-exports-lint.git"
+    "url": "git+https://github.com/kazupon/jsr-exports-lint.git"
   },
   "keywords": [
     "tsdown",
+    "unbuild",
+    "bundler",
     "exports",
     "jsr.json"
   ],
@@ -60,7 +62,7 @@
   },
   "scripts": {
     "build": "tsdown",
-    "changelog": "gh-changelogen --repo=kazupon/tsdown-jsr-exports-lint",
+    "changelog": "gh-changelogen --repo=kazupon/jsr-exports-lint",
     "clean": "git clean -df",
     "dev": "pnpx @eslint/config-inspector --config eslint.config.ts",
     "dev:eslint": "pnpx @eslint/config-inspector --config eslint.config.ts",

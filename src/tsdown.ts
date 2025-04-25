@@ -1,5 +1,11 @@
 /**
  * An entry for tsdown hooks
+ *
+ * @example
+ * ```js
+ * import { lintJsrExports } from 'jsr-exports-lint/tsdown'
+ * ```
+ *
  * @module
  */
 

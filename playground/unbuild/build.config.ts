@@ -1,4 +1,4 @@
-import { lintJsrExports } from 'tsdown-jsr-exports-lint/unbuild'
+import { lintJsrExports } from 'jsr-exports-lint/unbuild'
 import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
