@@ -1,7 +1,7 @@
 {
   "name": "jsr-exports-lint",
   "description": "JSR exports field lint for bundlers",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "license": "MIT",
   "funding": "https://github.com/sponsors/kazupon",
   "bugs": {
