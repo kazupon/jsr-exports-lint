@@ -59,7 +59,9 @@ export async function lint({
     process.exit(1)
   }
 
+  const startTime = performance.now()
   const result = validateJsrExports(entries, jsr.exports, cwd)
+  const endTime = performance.now()
 
   const messages = [] as string[]
   for (const [_, value] of Object.entries(result)) {
@@ -78,7 +80,11 @@ export async function lint({
     process.exit(1)
   } else {
     if (!silent) {
-      console.log(pc.green('✔'), 'No JSR exports issues found')
+      console.log(
+        pc.green('✔'),
+        'No JSR exports issues found',
+        pc.dim(`(${(endTime - startTime).toFixed(2)}ms)`)
+      )
     }
   }
 }
