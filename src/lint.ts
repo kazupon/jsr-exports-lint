@@ -24,6 +24,11 @@ interface LintOptions {
    */
   entries?: Record<string, string>
   /**
+   * The lint current working directory.
+   * @default '.''
+   */
+  cwd?: string
+  /**
    * Whether to suppress output messages.
    * @default false
    */
@@ -37,6 +42,7 @@ interface LintOptions {
 export async function lint({
   jsrPath = path.resolve(process.cwd(), 'jsr.json'),
   entries = {},
+  cwd = '.',
   silent = false
 }: LintOptions = {}): Promise<void> {
   // resolve target jsr path
@@ -53,7 +59,7 @@ export async function lint({
     process.exit(1)
   }
 
-  const result = validateJsrExports(entries, jsr.exports)
+  const result = validateJsrExports(entries, jsr.exports, cwd)
 
   const messages = [] as string[]
   for (const [_, value] of Object.entries(result)) {

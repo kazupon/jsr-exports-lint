@@ -1,4 +1,6 @@
 {
   "name": "@playground/tsdown",
-  "exports": {}
+  "exports": {
+    ".": "./src/index.ts"
+  }
 }

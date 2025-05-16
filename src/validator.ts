@@ -3,9 +3,12 @@
  * @license MIT
  */
 
+import path from 'node:path'
+
 export function validateJsrExports(
   entries: Record<string, string>,
-  jsr: Record<string, string>
+  jsr: Record<string, string>,
+  cwd = '.'
 ): Record<string, string | true> {
   const result: Record<string, string | true> = {}
 
@@ -13,9 +16,9 @@ export function validateJsrExports(
     const exportKey = key === 'index' ? '.' : `./${key}`
     if (jsr[exportKey]) {
       result[exportKey] =
-        jsr[exportKey] === `./${value}`
+        path.resolve(cwd, jsr[exportKey]) === value
           ? true
-          : `jsr.exports["${exportKey}"] is ./${value}, but it does not exist in jsr file.`
+          : `jsr.exports["${exportKey}"] is ${jsr[exportKey]}, but it's miss-matched in your tsdown entry.`
     } else {
       result[exportKey] = `jsr.exports["${exportKey}"] does not define.`
     }

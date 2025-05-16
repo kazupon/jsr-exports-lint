@@ -28,6 +28,7 @@ export function lintJsrExports(jsrPath?: string): (ctx: BuildContext) => void | 
     await lint({
       jsrPath,
       entries: ctx.options.entry as Record<string, string>,
+      cwd: ctx.options.cwd,
       silent: ctx.options.silent ?? false
     })
   }

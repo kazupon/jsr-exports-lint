@@ -1,4 +1,6 @@
 {
   "name": "@playground/unbuild",
-  "exports": {}
+  "exports": {
+    ".": "./src/index.ts"
+  }
 }

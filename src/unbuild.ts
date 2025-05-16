@@ -31,6 +31,7 @@ export function lintJsrExports(jsrPath?: string): (ctx: BuildContext) => void | 
     await lint({
       jsrPath,
       entries: normalizeEntries(ctx),
+      cwd: ctx.options.rootDir,
       silent: false
     })
   }
@@ -44,8 +45,7 @@ function normalizeEntries(ctx: BuildContext): Record<string, string> {
     if (!ext) {
       throw new Error(`No entry found for ${entry.input}`)
     }
-    const entryPath = entry.input.split(ctx.options.rootDir)[1]
-    entries[entry.name!] = `${entryPath}${ext}`
+    entries[entry.name!] = `${entry.input}${ext}`
   }
   return entries
 }
