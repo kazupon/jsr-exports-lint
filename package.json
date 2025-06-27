@@ -100,7 +100,7 @@
   },
   "devDependencies": {
     "@eslint/markdown": "^6.4.0",
-    "@kazupon/eslint-config": "^0.30.0",
+    "@kazupon/eslint-config": "^0.31.0",
     "@kazupon/prettier-config": "^0.1.1",
     "@types/node": "^22.15.18",
     "@vitest/eslint-plugin": "^1.1.44",
