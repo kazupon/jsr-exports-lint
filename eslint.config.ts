@@ -55,8 +55,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   }),
   vitest(),
   prettier(),
-  // @ts-expect-error -- FIXME
-  globalIgnores(['.vscode', '**/dist/**', 'tsconfig.json', 'pnpm-lock.yaml'])
+  globalIgnores(['.vscode', '**/dist/**', 'tsconfig.json', 'pnpm-lock.yaml', 'CHANGELOG.md'])
 )
 
 export default config

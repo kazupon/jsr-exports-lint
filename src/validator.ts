@@ -14,9 +14,10 @@ export function validateJsrExports(
 
   for (const [key, value] of Object.entries(entries)) {
     const exportKey = key === 'index' ? '.' : `./${key}`
+    const resolvedValue = path.isAbsolute(value) ? value : path.resolve(cwd, value)
     if (jsr[exportKey]) {
       result[exportKey] =
-        path.resolve(cwd, jsr[exportKey]) === value
+        path.resolve(cwd, jsr[exportKey]) === resolvedValue
           ? true
           : `jsr.exports["${exportKey}"] is ${jsr[exportKey]}, but it's miss-matched in your tsdown entry.`
     } else {

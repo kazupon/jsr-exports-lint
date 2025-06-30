@@ -4,5 +4,5 @@ onlyBuiltDependencies:
   - esbuild
   - unrs-resolver
 catalog:
-  tsdown: ^0.12.0
+  tsdown: 0.12.8
   unbuild: ^3.5.0

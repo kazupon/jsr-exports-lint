@@ -118,3 +118,36 @@ describe('nest', () => {
     expect(result['./foo/bar']).toEqual(`jsr.exports["./foo/bar"] does not define.`)
   })
 })
+
+describe('relative path', () => {
+  test('success', () => {
+    const entries = {
+      index: './src/index.ts',
+      'foo/index': './src/foo/index.ts',
+      'foo/bar': './src/foo/bar.ts'
+    }
+    const jsr = {
+      '.': './src/index.ts',
+      './foo/index': './src/foo/index.ts',
+      './foo/bar': './src/foo/bar.ts'
+    }
+    const result = validateJsrExports(entries, jsr, '/path/to/project')
+    console.log(result)
+    expect(result['.']).toEqual(true)
+    expect(result['./foo/index']).toEqual(true)
+    expect(result['./foo/bar']).toEqual(true)
+  })
+
+  test('fail', () => {
+    const entries = {
+      index: './src/index.ts',
+      'foo/index': './src/foo/index.ts',
+      'foo/bar': './src/foo/bar.ts'
+    }
+    const jsr = {}
+    const result = validateJsrExports(entries, jsr, '/path/to/project')
+    expect(result['.']).toEqual(`jsr.exports["."] does not define.`)
+    expect(result['./foo/index']).toEqual(`jsr.exports["./foo/index"] does not define.`)
+    expect(result['./foo/bar']).toEqual(`jsr.exports["./foo/bar"] does not define.`)
+  })
+})
