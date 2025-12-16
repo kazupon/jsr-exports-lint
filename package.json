@@ -124,7 +124,7 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.35.0",
     "unbuild": "catalog:",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.0"
   },
   "prettier": "@kazupon/prettier-config",
   "lint-staged": {
