@@ -80,8 +80,7 @@
     "prepare": "git config --local core.hooksPath .githooks",
     "release": "bumpp --commit \"release: v%s\" --all --push --tag",
     "test": "vitest run",
-    "typecheck": "pnpm run --stream --color \"/^typecheck:/\"",
-    "typecheck:tsc": "tsc --noEmit"
+    "typecheck": "tsgo --noEmit --diagnostics"
   },
   "dependencies": {
     "picocolors": "^1.1.1"
@@ -103,6 +102,7 @@
     "@kazupon/eslint-config": "^0.32.0",
     "@kazupon/prettier-config": "^0.2.0",
     "@types/node": "^25.0.3",
+    "@typescript/native-preview": "7.0.0-dev.20251221.1",
     "@vitest/eslint-plugin": "^1.6.4",
     "bumpp": "^10.3.2",
     "eslint": "^9.39.2",
