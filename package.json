@@ -71,7 +71,7 @@
     "fix:knip": "knip --fix --no-exit-code",
     "fix:prettier": "prettier . --write  --experimental-cli",
     "lint": "pnpm run --color \"/^lint:/\"",
-    "lint:eslint": "eslint .",
+    "lint:eslint": "eslint . --cache",
     "lint:knip": "knip",
     "lint:prettier": "prettier . --check  --experimental-cli",
     "play:tsdown": "pnpm run --filter @playground/tsdown build",
@@ -98,8 +98,8 @@
     }
   },
   "devDependencies": {
-    "@eslint/markdown": "^6.6.0",
-    "@kazupon/eslint-config": "^0.32.0",
+    "@eslint/markdown": "^7.5.1",
+    "@kazupon/eslint-config": "^0.43.0",
     "@kazupon/prettier-config": "^0.2.0",
     "@types/node": "^25.0.3",
     "@typescript/native-preview": "7.0.0-dev.20251221.1",
@@ -110,6 +110,7 @@
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsonc": "^2.21.0",
+    "eslint-plugin-markdown-preferences": "^0.40.2",
     "eslint-plugin-module-interop": "^0.3.1",
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-unicorn": "^59.0.1",

@@ -39,7 +39,7 @@ export function lintJsrExports(jsrPath?: string): (ctx: BuildContext) => void | 
 
 function normalizeEntries(ctx: BuildContext): Record<string, string> {
   const ctxEntries = ctx.options.entries.filter(entry => entry.builder === 'rollup' && entry.name)
-  const entries: Record<string, string> = Object.create(null)
+  const entries = Object.create(null) as Record<string, string>
   for (const entry of ctxEntries) {
     const ext = EXTENSIONS.find(ext => fs.existsSync(`${entry.input}${ext}`))
     if (!ext) {

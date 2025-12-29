@@ -35,7 +35,8 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   }),
   typescript({
     parserOptions: {
-      tsconfigRootDir: import.meta.dirname
+      tsconfigRootDir: import.meta.dirname,
+      project: true
     }
   }),
   jsonc({
@@ -50,6 +51,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   markdown({
     rules: {
       'import/extensions': 'off',
+      'import/namespace': 'off',
       'unicorn/filename-case': 'off'
     }
   }),
