@@ -132,7 +132,6 @@ describe('relative path', () => {
       './foo/bar': './src/foo/bar.ts'
     }
     const result = validateJsrExports(entries, jsr, '/path/to/project')
-    console.log(result)
     expect(result['.']).toEqual(true)
     expect(result['./foo/index']).toEqual(true)
     expect(result['./foo/bar']).toEqual(true)
