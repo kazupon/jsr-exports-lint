@@ -5,6 +5,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
   clean: true,
   outDir: 'dist',
   publint: true,
+  fixedExtension: false,
   dts: true
 })
 

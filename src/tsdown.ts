@@ -27,9 +27,9 @@ export function lintJsrExports(jsrPath?: string): (ctx: BuildContext) => void | 
   return async (ctx: BuildContext): Promise<void> => {
     await lint({
       jsrPath,
-      entries: ctx.options.entry as Record<string, string>,
+      entries: ctx.options.entry,
       cwd: ctx.options.cwd,
-      silent: ctx.options.silent ?? false
+      silent: ctx.options.logger.level === 'silent'
     })
   }
 }

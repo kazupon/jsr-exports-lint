@@ -4,5 +4,10 @@ onlyBuiltDependencies:
   - esbuild
   - unrs-resolver
 catalog:
-  tsdown: 0.12.8
+  tsdown: ^0.18.3
   unbuild: ^3.6.1
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - '@typescript/native-preview'
+  - oxfmt
+  - oxlint
