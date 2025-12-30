@@ -2,6 +2,7 @@
   "name": "@playground/unbuild",
   "exports": {
     ".": "./src/index.ts",
+    "./array": "./src/array/index.ts",
     "./utils": "./src/utils.ts"
   }
 }

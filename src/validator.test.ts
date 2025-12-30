@@ -114,7 +114,8 @@ describe('nest', () => {
     const jsr = {}
     const result = validateJsrExports(entries, jsr, '/path/to/project')
     expect(result['.']).toEqual(`jsr.exports["."] does not define.`)
-    expect(result['./foo/index']).toEqual(`jsr.exports["./foo/index"] does not define.`)
+    // barrel file (foo/index) uses shortened form (./foo) by default
+    expect(result['./foo']).toEqual(`jsr.exports["./foo"] does not define.`)
     expect(result['./foo/bar']).toEqual(`jsr.exports["./foo/bar"] does not define.`)
   })
 })
@@ -146,7 +147,95 @@ describe('relative path', () => {
     const jsr = {}
     const result = validateJsrExports(entries, jsr, '/path/to/project')
     expect(result['.']).toEqual(`jsr.exports["."] does not define.`)
-    expect(result['./foo/index']).toEqual(`jsr.exports["./foo/index"] does not define.`)
+    // barrel file (foo/index) uses shortened form (./foo) by default
+    expect(result['./foo']).toEqual(`jsr.exports["./foo"] does not define.`)
     expect(result['./foo/bar']).toEqual(`jsr.exports["./foo/bar"] does not define.`)
+  })
+})
+
+describe('barrel file (index.ts)', () => {
+  test('success: entry "array/index" matches jsr exports "./array"', () => {
+    const entries = {
+      index: '/path/to/project/src/index.ts',
+      'array/index': '/path/to/project/src/array/index.ts',
+      utils: '/path/to/project/src/utils.ts'
+    }
+    const jsr = {
+      '.': './src/index.ts',
+      './array': './src/array/index.ts',
+      './utils': './src/utils.ts'
+    }
+
+    const result = validateJsrExports(entries, jsr, '/path/to/project')
+    expect(result['.']).toEqual(true)
+    expect(result['./array']).toEqual(true)
+    expect(result['./utils']).toEqual(true)
+  })
+
+  test('success: nested barrel file "foo/bar/index" matches jsr exports "./foo/bar"', () => {
+    const entries = {
+      index: '/path/to/project/src/index.ts',
+      'foo/bar/index': '/path/to/project/src/foo/bar/index.ts'
+    }
+    const jsr = {
+      '.': './src/index.ts',
+      './foo/bar': './src/foo/bar/index.ts'
+    }
+
+    const result = validateJsrExports(entries, jsr, '/path/to/project')
+    expect(result['.']).toEqual(true)
+    expect(result['./foo/bar']).toEqual(true)
+  })
+
+  test('not define: barrel file entry without corresponding jsr exports', () => {
+    const entries = {
+      index: '/path/to/project/src/index.ts',
+      'array/index': '/path/to/project/src/array/index.ts'
+    }
+    const jsr = {
+      '.': './src/index.ts'
+    }
+
+    const result = validateJsrExports(entries, jsr, '/path/to/project')
+    expect(result['.']).toEqual(true)
+    expect(result['./array']).toEqual(`jsr.exports["./array"] does not define.`)
+  })
+
+  test('wrong value: barrel file entry with mismatched jsr exports value', () => {
+    const entries = {
+      index: '/path/to/project/src/index.ts',
+      'array/index': '/path/to/project/src/array/index.ts'
+    }
+    const jsr = {
+      '.': './src/index.ts',
+      './array': './src/other/index.ts'
+    }
+
+    const result = validateJsrExports(entries, jsr, '/path/to/project')
+    expect(result['.']).toEqual(true)
+    expect(result['./array']).toEqual(
+      `jsr.exports["./array"] is ./src/other/index.ts, but it's miss-matched in your tsdown entry.`
+    )
+  })
+
+  test('success: mix of barrel and non-barrel entries', () => {
+    const entries = {
+      index: '/path/to/project/src/index.ts',
+      'components/index': '/path/to/project/src/components/index.ts',
+      'utils/helpers': '/path/to/project/src/utils/helpers.ts',
+      'types/index': '/path/to/project/src/types/index.ts'
+    }
+    const jsr = {
+      '.': './src/index.ts',
+      './components': './src/components/index.ts',
+      './utils/helpers': './src/utils/helpers.ts',
+      './types': './src/types/index.ts'
+    }
+
+    const result = validateJsrExports(entries, jsr, '/path/to/project')
+    expect(result['.']).toEqual(true)
+    expect(result['./components']).toEqual(true)
+    expect(result['./utils/helpers']).toEqual(true)
+    expect(result['./types']).toEqual(true)
   })
 })

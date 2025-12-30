@@ -13,7 +13,18 @@ export function validateJsrExports(
   const result: Record<string, string | true> = {}
 
   for (const [key, value] of Object.entries(entries)) {
-    const exportKey = key === 'index' ? '.' : `./${key}`
+    // Handle barrel files: try shortened form first (./foo), then full form (./foo/index)
+    const isBarrelFile = key.endsWith('/index')
+    const shortenedKey = isBarrelFile ? key.slice(0, -6) : key
+    const shortenedExportKey = shortenedKey === 'index' ? '.' : `./${shortenedKey}`
+    const fullExportKey = key === 'index' ? '.' : `./${key}`
+
+    // For barrel files, try shortened form first, then fall back to full form
+    const exportKey =
+      isBarrelFile && !jsr[shortenedExportKey] && jsr[fullExportKey]
+        ? fullExportKey
+        : shortenedExportKey
+
     const resolvedValue = path.isAbsolute(value) ? value : path.resolve(cwd, value)
     if (jsr[exportKey]) {
       result[exportKey] =
