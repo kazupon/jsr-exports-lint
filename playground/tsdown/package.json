@@ -6,6 +6,10 @@
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
     },
+    "./array": {
+      "import": "./dist/array/index.mjs",
+      "types": "./dist/array/index.d.ts"
+    },
     "./utils": {
       "import": "./dist/utils.mjs",
       "types": "./dist/utils.d.ts"
