@@ -1,38 +1,15 @@
 import {
   comments,
   defineConfig,
-  imports,
-  javascript,
   jsonc,
   markdown,
-  prettier,
-  promise,
   typescript,
-  unicorn,
-  vitest,
+  oxlint,
   yaml
 } from '@kazupon/eslint-config'
-import { globalIgnores } from 'eslint/config'
 
 const config: ReturnType<typeof defineConfig> = defineConfig(
-  javascript(),
-  imports({
-    typescript: true,
-    rules: {
-      'import/extensions': ['error', 'always', { ignorePackages: true }]
-    }
-  }),
-  comments({
-    kazupon: {
-      ignores: ['**/*.test.ts', '**/*.spec.ts', 'playground/**/*.ts']
-    }
-  }),
-  promise(),
-  unicorn({
-    rules: {
-      'unicorn/prevent-abbreviations': 'off'
-    }
-  }),
+  comments({ kazupon: false }),
   typescript({
     parserOptions: {
       tsconfigRootDir: import.meta.dirname,
@@ -48,16 +25,11 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   yaml({
     prettier: true
   }),
-  markdown({
-    rules: {
-      'import/extensions': 'off',
-      'import/namespace': 'off',
-      'unicorn/filename-case': 'off'
-    }
-  }),
-  vitest(),
-  prettier(),
-  globalIgnores(['.vscode', '**/dist/**', 'tsconfig.json', 'pnpm-lock.yaml', 'CHANGELOG.md'])
+  markdown({ preferences: true }),
+  oxlint({
+    presets: ['typescript'],
+    configFile: './.oxlintrc.json'
+  })
 )
 
 export default config

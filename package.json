@@ -69,11 +69,14 @@
     "fix": "pnpm run --color \"/^fix:/\"",
     "fix:eslint": "eslint . --fix",
     "fix:knip": "knip --fix --no-exit-code",
-    "fix:prettier": "prettier . --write  --experimental-cli",
+    "fix:oxfmt": "oxfmt . --config ./node_modules/@kazupon/prettier-config/index.json",
+    "fix:oxlint": "oxlint --type-aware --fix",
     "lint": "pnpm run --color \"/^lint:/\"",
     "lint:eslint": "eslint . --cache",
     "lint:knip": "knip",
-    "lint:prettier": "prettier . --check  --experimental-cli",
+    "lint:oxfmt": "oxfmt . --check --config ./node_modules/@kazupon/prettier-config/index.json",
+    "lint:oxlint": "oxlint --type-aware",
+    "lint:typecheck": "pnpm run typecheck",
     "play:tsdown": "pnpm run --filter @playground/tsdown build",
     "play:unbuild": "pnpm run --filter @playground/unbuild build",
     "prepack": "pnpm build",
@@ -100,26 +103,24 @@
   "devDependencies": {
     "@eslint/markdown": "^7.5.1",
     "@kazupon/eslint-config": "^0.43.0",
+    "@kazupon/eslint-plugin": "^0.7.1",
     "@kazupon/prettier-config": "^0.2.0",
     "@types/node": "^25.0.3",
     "@typescript/native-preview": "7.0.0-dev.20251221.1",
     "@vitest/eslint-plugin": "^1.6.4",
     "bumpp": "^10.3.2",
     "eslint": "^9.39.2",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-import-resolver-typescript": "^4.4.4",
-    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsonc": "^2.21.0",
     "eslint-plugin-markdown-preferences": "^0.40.2",
     "eslint-plugin-module-interop": "^0.3.1",
-    "eslint-plugin-promise": "^7.2.1",
-    "eslint-plugin-unicorn": "^59.0.1",
-    "eslint-plugin-unused-imports": "^4.3.0",
+    "eslint-plugin-oxlint": "^1.35.0",
     "eslint-plugin-yml": "^1.19.1",
     "gh-changelogen": "^0.2.8",
     "knip": "^5.78.0",
     "lint-staged": "^16.2.7",
-    "prettier": "^3.7.4",
+    "oxfmt": "^0.20.0",
+    "oxlint": "^1.35.0",
+    "oxlint-tsgolint": "^0.10.0",
     "publint": "^0.3.16",
     "tsdown": "catalog:",
     "typescript": "^5.9.3",
@@ -130,15 +131,24 @@
   "prettier": "@kazupon/prettier-config",
   "lint-staged": {
     "*.ts?(x)": [
-      "prettier --parser=typescript --write",
-      "eslint --fix"
+      "oxfmt --config ./node_modules/@kazupon/prettier-config/index.json --no-error-on-unmatched-pattern",
+      "oxlint --config .oxlintrc.json --type-aware --fix"
     ],
     "*.{js,mjs,cjs}": [
-      "prettier --write",
+      "oxfmt --config ./node_modules/@kazupon/prettier-config/index.json --no-error-on-unmatched-pattern",
+      "oxlint --config .oxlintrc.json --type-aware --fix"
+    ],
+    "*.{jsonc,json5,md,yml,yaml}": [
+      "oxfmt --config ./node_modules/@kazupon/prettier-config/index.json --no-error-on-unmatched-pattern",
       "eslint --fix"
     ],
-    "*.{json,jsonc,json5,md,yml,yaml}": [
-      "prettier --write"
+    "!(package).json": [
+      "oxfmt --config ./node_modules/@kazupon/prettier-config/index.json --no-error-on-unmatched-pattern",
+      "eslint --fix"
+    ],
+    "!(pnpm-lock).{yml,yaml}": [
+      "oxfmt --config ./node_modules/@kazupon/prettier-config/index.json --no-error-on-unmatched-pattern",
+      "eslint --fix"
     ]
   }
 }

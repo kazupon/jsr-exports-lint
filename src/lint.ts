@@ -57,7 +57,6 @@ export async function lint({
   }
   if (!jsr.exports) {
     error(pc.dim('No jsr.exports found in jsr.json'))
-    // eslint-disable-next-line unicorn/no-process-exit -- exit if no exports
     process.exit(1)
   }
 
@@ -78,7 +77,6 @@ export async function lint({
       error(pc.whiteBright(msg))
       console.log('')
     }
-    // eslint-disable-next-line unicorn/no-process-exit -- exit if errors found
     process.exit(1)
   } else {
     if (!silent) {
