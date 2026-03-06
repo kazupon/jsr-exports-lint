@@ -109,7 +109,7 @@
     "@typescript/native-preview": "7.0.0-dev.20260109.1",
     "@vitest/eslint-plugin": "^1.6.4",
     "bumpp": "^10.3.2",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.0",
     "eslint-plugin-jsonc": "^2.21.0",
     "eslint-plugin-markdown-preferences": "^0.40.2",
     "eslint-plugin-module-interop": "^0.3.1",
