@@ -11,5 +11,5 @@ minimumReleaseAgeExclude:
   - '@typescript/native-preview'
   - oxfmt
   - oxlint
-  # Renovate security update: vitest@4.1.0
-  - vitest@4.1.0
+  # Renovate security update: vitest@4.1.0 || 4.1.11
+  - vitest@4.1.0 || 4.1.11
